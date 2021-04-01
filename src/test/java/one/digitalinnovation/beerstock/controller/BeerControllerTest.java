@@ -18,6 +18,7 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 import static one.digitalinnovation.beerstock.utils.JsonConvertionUtils.asJsonString;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -50,7 +51,7 @@ class BeerControllerTest {
     @Test
     void whenPOSTIsCalledThenABeerIsCreated() throws Exception {
         //given
-        BeerDTO beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
+        BeerDTO beerDTO = getBeerDTO();
         //when
         when(beerService.createBeer(beerDTO)).thenReturn(beerDTO);
         //then
@@ -66,7 +67,7 @@ class BeerControllerTest {
     @Test
     void whenPOSTIsCalledWithoudRequiredFieldThenAnErrorIsReturned() throws Exception {
         //given
-        BeerDTO beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
+        BeerDTO beerDTO = getBeerDTO();
         beerDTO.setBrand(null);
         //when
         //then
@@ -74,5 +75,24 @@ class BeerControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(beerDTO)))
                 .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void whenGETIsCalledWithValidNameThenOkStatusIsReturned() throws Exception {
+        //given
+        BeerDTO beerDTO = getBeerDTO();
+        //when
+        when(beerService.findByName(beerDTO.getName())).thenReturn(beerDTO);
+        //then
+        mockMvc.perform(get(BEER_API_URL_PATH + "/" + beerDTO.getName())
+                .contentType(MediaType.APPLICATION_JSON))
+                    .andExpect(status().isOk())
+                    .andExpect(jsonPath("$.name", is(beerDTO.getName())))
+                    .andExpect(jsonPath("$.brand", is(beerDTO.getBrand())))
+                    .andExpect(jsonPath("$.type", is(beerDTO.getType().toString())));
+    }
+
+    private BeerDTO getBeerDTO() {
+        return BeerDTOBuilder.builder().build().toBeerDTO();
     }
 }
