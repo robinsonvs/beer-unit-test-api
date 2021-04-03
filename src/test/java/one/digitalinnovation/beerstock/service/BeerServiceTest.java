@@ -101,6 +101,17 @@ class BeerServiceTest {
         assertThat(foundListBeerDTO.get(0), is(equalTo(expectedFoundBeerDTO)));
     }
 
+    @Test
+    void whenListBeerIsCalledThenReturnAnEmptyListOfBeers() {
+        //given
+        //when
+        when((beerRepository.findAll())).thenReturn(Collections.EMPTY_LIST);
+        //then
+        List<BeerDTO> foundListBeerDTO = beerService.listAll();
+
+        assertThat(foundListBeerDTO, is(empty()));
+    }
+
     private BeerDTO getBeerDTO() {
         return BeerDTOBuilder.builder().build().toBeerDTO();
     }
