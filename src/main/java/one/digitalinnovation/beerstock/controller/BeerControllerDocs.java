@@ -10,9 +10,7 @@ import one.digitalinnovation.beerstock.exception.BeerAlreadyRegisteredException;
 import one.digitalinnovation.beerstock.exception.BeerNotFoundException;
 import one.digitalinnovation.beerstock.exception.BeerStockExceededException;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @Api("Manages beer stock")
@@ -49,7 +47,7 @@ public interface BeerControllerDocs {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Success beer found in the system"),
             @ApiResponse(code = 400, message = "Missing required fields or wrong field range value."),
-            @ApiResponse(code = 404, message = "Beer with given name not found.")
+            @ApiResponse(code = 404, message = "Beer with given id not found.")
     })
     BeerDTO increment(@PathVariable Long id, QuantityDTO quantityDTO) throws BeerNotFoundException, BeerStockExceededException;
 
@@ -57,7 +55,7 @@ public interface BeerControllerDocs {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Success beer found in the system"),
             @ApiResponse(code = 400, message = "Missing required fields or wrong field range value."),
-            @ApiResponse(code = 404, message = "Beer with given name not found.")
+            @ApiResponse(code = 404, message = "Beer with given id not found.")
     })
     BeerDTO decrement(@PathVariable Long id, QuantityDTO quantityDTO) throws BeerNotFoundException, BeerStockExceededException;
 }
