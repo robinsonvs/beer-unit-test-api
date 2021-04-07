@@ -38,7 +38,16 @@ Below are links on mentioned topics:
 * [Reference to the REST architectural standard](https://restfulapi.net/)
 * [Testing Pyramid Reference - Martin Fowler](https://martinfowler.com/articles/practical-test-pyramid.html#TheImportanceOftestAutomation)
 
-
+<br/>
+<p align="center"><img src="/imgs/img01.png" /></p>
+<br/>
+<p align="center"><img src="/imgs/img02.png" /></p>
+<br/>
+<p align="center"><img src="/imgs/img03.png" /></p>
+<br/>
+<p align="center"><img src="/imgs/img04.png" /></p>
+<br/>
+<p align="center"><img src="/imgs/img05.png" /></p>
 
 
 
