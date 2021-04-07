@@ -28,7 +28,7 @@ The following prerequisites are necessary for the execution of the project:
 Below are links on mentioned topics:
 
 * [SDKMan! install and management Java and Maven](https://sdkman.io/)
-* [Referência do Intellij IDEA Community](https://www.jetbrains.com/idea/download)
+* [Intellij IDEA Community](https://www.jetbrains.com/idea/download)
 * [Palette of command shortcuts for Intellij](https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf)
 * [Spring](https://spring.io/)
 * [JUnit 5](https://junit.org/junit5/docs/current/user-guide/)
