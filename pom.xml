@@ -8,7 +8,7 @@
 		<version>2.3.0.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>one.digitalinnovation</groupId>
+	<groupId>com.severo</groupId>
 	<artifactId>beerstock</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>beerstock</name>
